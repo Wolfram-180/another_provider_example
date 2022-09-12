@@ -14,14 +14,12 @@ class AccountScreen extends StatelessWidget {
         title: Text('Account Details'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text('Name: '),
-            Text('Email: '),
-            Text('Age: '),
-          ],
-        ),
+        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
+            Widget>[
+          Text('Name: ' + Provider.of<Data>(context).data['name'].toString()),
+          Text('Email: ' + Provider.of<Data>(context).data['email'].toString()),
+          Text('Age: ' + Provider.of<Data>(context).data['age'].toString()),
+        ]),
       ),
     );
   }

@@ -25,9 +25,21 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: AccountScreen(), routes: {
-      'account_screen': (context) => AccountScreen(),
-      'settings_screen': (context) => SettingsScreen(),
-    });
+    return ChangeNotifierProvider<Data>(
+      create: (context) => Data(),
+      child: MaterialApp(home: AccountScreen(), routes: {
+        'account_screen': (context) => AccountScreen(),
+        'settings_screen': (context) => SettingsScreen(),
+      }),
+    );
+  }
+}
+
+class Data extends ChangeNotifier {
+  Map data = {'name': 'Blog', 'email': 'example@example.com', 'age': 42};
+
+  void updateAccount(input) {
+    data = input;
+    notifyListeners();
   }
 }
